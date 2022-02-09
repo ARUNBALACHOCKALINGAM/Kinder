@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Header from "../Header/Header";
+import { Link} from "react-router-dom";
+
 
 import donor from "../../assets/img/Asset 1@2x 1.png";
 import donee from "../../assets/img/Illustration - pavan 697 (1).png";
 import CSRpartner from "../../assets/img/image 19.png";
+
 
 const roles = [
   {
@@ -34,11 +35,11 @@ const roles = [
 ];
 
 const ChooseRole = () => {
+
   return (
     <div>
-      <Header />
       <div>
-        <h1 className="font-semibold font-mono text-white text-xl mt-5 text-center tablet:text-3xl desktop:text-4xl desktop:mt-16">
+        <h1 className="font-semibold font-mono text-purple text-xl mt-5 text-center tablet:text-3xl desktop:text-4xl desktop:mt-16">
           Choose a role
         </h1>
       </div>
@@ -46,10 +47,10 @@ const ChooseRole = () => {
         {roles.map((role, index) => {
           return (
             <Link
-              to={`/${role.name}/login`}
+              to={`/campaignhistory`}
               id={role.name}
               key={role.name}
-              className={`flex  ${role.fd} justify-center w-64 h-24 items-center ml-auto mr-auto mt-10 bg-purple rounded-lg shadow-xl shadow-purple/50 tablet:flex-col tablet:w-52 tablet:h-40 desktop:h-52`}
+              className={`flex  ${role.fd} justify-center w-64 h-24 items-center ml-auto mr-auto mt-10 bg-purple rounded-lg shadow-xl shadow-sec/70 tablet:flex-col tablet:w-52 tablet:h-40 desktop:h-52`}
             >
               <img
                 className={`relative pointer-events-none  right-0 bottom-4 w-${role.width} h-32`}
