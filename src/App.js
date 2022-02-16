@@ -12,6 +12,9 @@ import NavBar from './components/UI/NavBar/NavBar';
 import Leaderboard_prop from './components/Leaderboard/LeaderboardProp';
 import History_prop from './components/History/HistoryProp';
 import Favorites_prop from './components/Favourite/FavoritesProp';
+import Donor from './layout/Donor';
+import CSRpartner from './layout/CSRpartner';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   return (

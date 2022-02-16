@@ -6,55 +6,91 @@ import pattern from "../../assets/img/pattern.svg";
 import illustration from "../../assets/img/kid.svg";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import { AiFillPicture } from "react-icons/ai";
+import { FaRupeeSign } from "react-icons/fa";
+import campaignimage from "../../assets/img/image2.jpg";
 
 const CreateCampaign = () => {
   const [formsubmit, setFormsubmit] = useState(true);
+
+  const [image, setImage] = useState({ images: [] });
 
   const createCampaign = (e) => {
     e.preventDefault();
     setFormsubmit(false);
   };
 
+  const fileUpload = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage((prevstate) => {
+          return { images: prevstate.images.concat(reader.result) };
+        });
+      }
+    };
+    console.log(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
-    <div className="h-screen overflow-hidden">
-      <Header />
+    <div className="h-5/6 overflow-hidden">
       <h1 className="invisible absolute text-white top-48 left-24 desktop:visible">
         "Find donors through kinder more easily"
       </h1>
-      <div className="flex flex-col mx-auto items-center justify-center desktop:w-8/12 desktop:bg-white desktop:ml-1/2 desktop:rounded-lg desktop:h-screen desktop:overflow-y-hidden desktop:mr-0 desktop:mt-10">
+      <div className="flex flex-col mx-auto items-center justify-center desktop:w-8/12 desktop:bg-white desktop:ml-1/2 desktop:rounded-lg desktop:h-screen desktop:overflow-y-hidden desktop:mr-0 desktop:mt-0">
         {formsubmit ? (
-          <div
-            className="flex flex-col w-5/6 items-center  desktop:mb-24 "
-          >
-            <h1 className="mt-5 text-xl font-semibold text-purple desktop:text-3xl desktop:mt-0 ">
-              Create a campaign
-            </h1>
+          <div className="mt-2 w-full flex flex-col justify-center items-center ">
+            <h1 className="text-xl font-bold text-purple ">Create a campaign</h1>
             <input
-              className="bg-white mt-10 h-7 w-5/6 pl-3 placeholder-black rounded-xl shadow-lg shadow-black/30 text-purple desktop:w-8/12 desktop:h-10"
+              className="w-5/6 mt-5 p-2 rounded-lg shadow-xl"
               type="text"
               placeholder="Enter title"
             />
-            <input
-              className="bg-white mt-10 h-7 w-5/6 pl-3 placeholder-black rounded-xl shadow-lg shadow-black/30 text-purple desktop:mt-10 desktop:w-8/12 desktop:h-10"
+            <textarea
+              className="mt-5 w-5/6 p-2 rounded-lg shadow-xl"
+              id=""
               placeholder="Enter description"
-              type="text"
-            />
-            <div className="flex flex-col justify-center items-center">
-            <input
-              type="file"
-              className="relative top-10 h-full w-full opacity-0"
-              placeholder="Enter amount"
-            />
-             <Button className="pointer-events-none  shadow-lg shadow-black/30 relative left-0 desktop:h-14" label="Add files or videos"/>
+              rows="4"
+            ></textarea>
+            <div className="overflow-hidden relative w-5/6 mt-5 ">
+              <button className="bg-purple hover:bg-indigo-dark text-white font-bold py-2 px-4 w-full inline-flex items-center rounded-lg shadow-xl">
+                <span>
+                  <AiFillPicture />
+                </span>
+                <span className="ml-2 w-5/6 text-medium">
+                  Add images/videos
+                </span>
+              </button>
+              <input
+                className="cursor-pointer w-full h-10 relative bottom-10 opacity-0 "
+                type="file"
+                onChange={fileUpload}
+                name="vacancyImageFiles"
+                multiple
+              />
+              <div className="flex flex-row flex-nowrap justify-around " >
+                {image.images.map((img) => {
+                  return (
+                    <img
+                      className="w-1/5 border-dashed border-2 border-lav relative bottom-4"
+                      src={img}
+                      alt="campaign image"
+                      accept="image/*"
+                    ></img>
+                  );
+                })}
+              </div>
             </div>
             <input
-              className="bg-white w-5/6 shadow-lg shadow-black/30 desktop:w-8/12  mt-10 placeholder-black pl-3 rounded-lg h-7 text-purple desktop:mt-20 desktop:h-10"
-              placeholder="Enter amount"
+              className="mt-5 w-5/6 p-2 rounded-lg shadow-xl relative bottom-8 "
+              type="text"
+              placeholder="₹ Enter amount"
             />
             <Button
+              className="mt-6 w-5/6 p-2 shadow-xl relative bottom-8"
               onChange={createCampaign}
-              className="mt-16 h-11 rounded-xl relative left-10 tablet:left-0"
-              label="Create campaign"
+              label="Post campaign"
             />
           </div>
         ) : (
@@ -63,12 +99,11 @@ const CreateCampaign = () => {
               Your campaign has been posted!
             </h1>
             <Link to="/campaignhistory">
-              <Button className="mt-5 desktop:mb-20" label="Go back" />
+              <Button className="w-5/6 p-2 mt-5 desktop:mb-20" label="Go back" />
             </Link>
           </div>
         )}
-      </div>
-      <img
+         <img
         className="hidden absolute bottom-0 left-1 desktop:block"
         src={pattern}
         alt="pattern"
@@ -78,6 +113,8 @@ const CreateCampaign = () => {
         src={illustration}
         alt="kid with phone"
       />
+      </div>
+     
     </div>
   );
 };

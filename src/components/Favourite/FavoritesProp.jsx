@@ -1,29 +1,38 @@
-import React from 'react'
-
+import React from "react";
+import Card from "../UI/Card/Card";
 import pic3 from "../../assets/img/flood.png";
-import Favorites from './Favorites.jsx';
+import CampaignCard from "../CampaignList/CampaignCard";
+import FavoritesCard from "./FavoritesCard";
+
+const data = [
+  {
+    image: pic3,
+    title: "Help Flood Victims of Kerala",
+    description: " Desc for flood victims",
+    completepercent: "43% completed",
+    level: "20",
+    active: 1,
+  },
+];
 
 function FavoritesProp() {
   return (
-      <>
-    <div class="max-w">
-    <div class="flex flex-col mt-4">
-    <h1 className="History-title"  class="text-whitesmoke text-6xl text-center font-extrabold font-mono"> Favorites  </h1>  
-     <p className="History-quote" class="text-purple text-3xl text-center font-mono font-extrabold">We see you felt connected with these causes,donate today and bring a smile on their face!</p>
-     </div>
-     </div>
-
-    <Favorites
-       
-      image={pic3}
-      Title="Help Flood Victims of Kerala"
-      Description=" Desc for flood victims"
-      Donation="43"
-      />
-     
-    
+    <>
+      <div className="h-full">
+        <div className=" overflow-hidden">
+          <div className="flex flex-col w-5/6  mx-auto flex-wrap laptop:w-[640px] desktop:w-[720px] tablet:flex-wrap">
+            <div className=" flex flex-col justify-center items-center mx-auto  rounded-lg mt-5 tablet:mt-10 tablet:w-11/12 tablet:p-4 desktop:w-5/6 ">
+             
+              <h1 className="text-xl font-semibold pt-2 pr-11 pl-11  font-mono text-white whitespace-nowrap mt-0 tablet:text-3xl desktop:text-3xl desktop:pr-1 desktop:pl-1">
+                Campaign history
+              </h1>
+            </div>
+          </div>
+          <FavoritesCard />
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
 export default FavoritesProp;

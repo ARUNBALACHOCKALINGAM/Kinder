@@ -49,7 +49,7 @@ function HistoryProp() {
         </div>
                
             </div>
-            
+          
     <History data={data} />
 
       </div>

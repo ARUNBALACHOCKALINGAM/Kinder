@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { Hambergur } from '../../../routes';
+import { DonorRoutes } from '../../../routes';
 import './navbar.css';
 import { IconContext } from 'react-icons';
 
-function NavBar() {
+
+function NavBar(props) {
   const [sidebar, setSidebar] = useState(false);
+  
+  console.log(props.routes);
+
+  
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -26,8 +31,9 @@ function NavBar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {Hambergur.map((item, index) => {
+            {DonorRoutes.map((item, index) => {
               return (
+              
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}

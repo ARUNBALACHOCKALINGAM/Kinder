@@ -6,12 +6,16 @@ navbar {
   display: flex;
   justify-content: start;
   align-items: center;
+  z-index: 10;
 }
 
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+  position: absolute;
+  left: 0;
+  top: 10px;
 }
 
 .nav-menu {
@@ -29,6 +33,7 @@ navbar {
 .nav-menu.active {
   left: 0;
   transition: 350ms;
+  z-index: 10;
 }
 
 .nav-text {
@@ -71,4 +76,15 @@ navbar {
 
 span {
   margin-left: 16px;
+}
+
+li:hover{
+  background-color: #F1CD83;
+}
+
+
+@media only screen and (min-width: 1080px) {
+  navbar{
+    background-color: black;
+  }
 }

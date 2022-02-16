@@ -4,24 +4,55 @@ import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as ImIcons from 'react-icons/im'
 
-export const Hambergur = [
+import FavoritesProp from './components/Favourite/FavoritesProp';
+import LeaderboardProp from './components/Leaderboard/LeaderboardProp';
+import HistoryProp from './components/History/HistoryProp';
+
+
+export const DonorRoutes = [
   {
     title: 'Leaderboard',
     path: '/leaderboard',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    component: <LeaderboardProp/>,
+    layout:'/donor'
   },
   {
     title: 'Favorites',
     path: '/favorites',
     icon: <AiIcons.AiFillHeart />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    component: FavoritesProp,
+    layout:'/donor'
   },
   {
     title: 'History',
     path: '/history',
     icon: <ImIcons.ImHistory />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    component: HistoryProp,
+    layout:'/donor'
   },
-  
+  {
+    title: 'Logout',
+    path: '/',
+    icon: <ImIcons.ImExit/>,
+    cName: 'nav-text',
+    component: HistoryProp,
+    layout:'/donor'
+  },
 ];
+
+export const CsrpartnerRoutes = [
+
+  {
+    title: 'Leaderboard',
+    path: '/leaderboard',
+    icon: <AiIcons.AiFillHome />,
+    cName: 'nav-text',
+    component:LeaderboardProp,
+    layout:'/csrpartner'
+  }
+
+]
