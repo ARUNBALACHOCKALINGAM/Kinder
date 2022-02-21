@@ -12,7 +12,7 @@ const CampaignList = () => {
         <div className="flex flex-col w-5/6  mx-auto flex-wrap laptop:w-[640px] desktop:w-[720px] tablet:flex-wrap">
           <div className=" flex flex-col justify-center items-center mx-auto  rounded-lg mt-5 tablet:mt-10 tablet:w-11/12 tablet:p-4 desktop:w-5/6 ">
          
-            <Link to="/createcampaign">
+            <Link to="/csrpartner/createcampaign">
               <Button
                 className="mt-2 mb-2 w-52 p-2 relative left-0 text-sm tablet:mt-6 desktop:left-0 "
                 label="Create campaign"

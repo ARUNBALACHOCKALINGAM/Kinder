@@ -5,6 +5,7 @@ import { Link} from "react-router-dom";
 import donor from "../../assets/img/Asset 1@2x 1.png";
 import donee from "../../assets/img/Illustration - pavan 697 (1).png";
 import CSRpartner from "../../assets/img/image 19.png";
+import Button from "../UI/Button/Button";
 
 
 const roles = [
@@ -25,7 +26,7 @@ const roles = [
     mr: "auto",
   },
   {
-    name: "CSR partner",
+    name: "CSRpartner",
     image: CSRpartner,
     width: "20",
     fd: "flex-row",
@@ -34,7 +35,7 @@ const roles = [
   },
 ];
 
-const ChooseRole = () => {
+const ChooseRole = (props) => {
 
   return (
     <div>
@@ -47,7 +48,7 @@ const ChooseRole = () => {
         {roles.map((role, index) => {
           return (
             <Link
-              to={`/campaignhistory`}
+              to={`/login/${role.name}`}
               id={role.name}
               key={role.name}
               className={`flex  ${role.fd} justify-center w-64 h-24 items-center ml-auto mr-auto mt-10 bg-purple rounded-lg shadow-xl shadow-sec/70 tablet:flex-col tablet:w-52 tablet:h-40 desktop:h-52`}

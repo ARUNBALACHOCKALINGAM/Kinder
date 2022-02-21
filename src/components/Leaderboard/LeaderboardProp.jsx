@@ -60,7 +60,7 @@ function LeaderboardProp() {
       </p>
       <div className="flex w-5/6 mx-auto flex-wrap desktop:w-1/2 tablet:flex-wrap">
         {data.map((content) => {
-          return <Card data={content} action="Donate" />;
+          return <Card  data={content} action="Donate" />;
         })}
       </div>
     </>

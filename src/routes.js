@@ -7,6 +7,10 @@ import * as ImIcons from 'react-icons/im'
 import FavoritesProp from './components/Favourite/FavoritesProp';
 import LeaderboardProp from './components/Leaderboard/LeaderboardProp';
 import HistoryProp from './components/History/HistoryProp';
+import ChooseRole from './components/ChooseRole/ChooseRole';
+import CampaignList from './components/CampaignList/CampaignList';
+import CreateCampaign from './components/CreateCampaign/CreateCampaign';
+
 
 
 export const DonorRoutes = [
@@ -23,7 +27,7 @@ export const DonorRoutes = [
     path: '/favorites',
     icon: <AiIcons.AiFillHeart />,
     cName: 'nav-text',
-    component: FavoritesProp,
+    component: <FavoritesProp/>,
     layout:'/donor'
   },
   {
@@ -31,28 +35,43 @@ export const DonorRoutes = [
     path: '/history',
     icon: <ImIcons.ImHistory />,
     cName: 'nav-text',
-    component: HistoryProp,
+    component: <HistoryProp/>,
     layout:'/donor'
   },
   {
     title: 'Logout',
-    path: '/',
+    path: '/donor',
     icon: <ImIcons.ImExit/>,
     cName: 'nav-text',
-    component: HistoryProp,
-    layout:'/donor'
+    component: <ChooseRole/>,
+    layout:'/login'
   },
 ];
 
 export const CsrpartnerRoutes = [
-
   {
-    title: 'Leaderboard',
-    path: '/leaderboard',
+    title: 'Campaign history',
+    path: '/campaignhistory',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text',
-    component:LeaderboardProp,
+    component:<CampaignList/>,
     layout:'/csrpartner'
-  }
-
+  },
+  {
+    title:'Create campaign',
+    path: '/createcampaign',
+    icon: <AiIcons.AiOutlinePlus/>,
+    cName: 'nav-text',
+    component: <CreateCampaign/>,
+    layout:'/csrpartner'
+  },
+  {
+    title: 'Logout',
+    path: '/csrpartner',
+    icon: <ImIcons.ImExit/>,
+    cName: 'nav-text',
+    component: <ChooseRole/>,
+    layout:'/login'
+  },
+  
 ]

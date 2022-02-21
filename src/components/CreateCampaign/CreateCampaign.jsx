@@ -98,7 +98,7 @@ const CreateCampaign = () => {
             <h1 className="text-xl mt-44 font-semibold text-purple desktop:text-3xl desktop:mb-10 ">
               Your campaign has been posted!
             </h1>
-            <Link to="/campaignhistory">
+            <Link to="/csrpartner/campaignhistory">
               <Button className="w-5/6 p-2 mt-5 desktop:mb-20" label="Go back" />
             </Link>
           </div>

@@ -20,7 +20,7 @@ navbar {
 
 .nav-menu {
   background-color: #5A287D;
-  width: 250px;
+  width: 300px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -83,8 +83,3 @@ li:hover{
 }
 
 
-@media only screen and (min-width: 1080px) {
-  navbar{
-    background-color: black;
-  }
-}

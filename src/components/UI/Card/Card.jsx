@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 
 const Card = (props) => {
-  console.log(props);
+
   return (
     <div
       className={`flex justify-center w-11/12  items-center mx-auto bg-white rounded-lg mt-5 shadow-xl shadow-acc/70 tablet:mt-20}`}
