@@ -1,0 +1,20 @@
+{
+  "name": "kinder",
+  "version": "1.0.0",
+  "description": "An CSR application for employees to provide and help people with their needs",
+  "main": "index.js",
+  "scripts": {
+    "build": "swagger-cli bundle openapi.yaml --outfile dist/openapi.yaml --type yaml",
+    "test": "npm run build && spectral lint dist/openapi.yaml",
+    "serve": "npm run build && redoc-cli serve dist/openapi.yaml --port 7000 --options.onlyRequiredInSamples",
+    "html": "npm run build && redoc-cli bundle dist/openapi.yaml  --output dist/index.html --options.onlyRequiredInSamples",
+    "clean": "rm -r dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@stoplight/spectral": "^6.1.0",
+    "redoc-cli": "^0.13.7"
+  }
+}

@@ -1,39 +1,26 @@
-import React from "react";
-import pic1 from "../../assets/img/d1.png";
-import pic2 from "../../assets/img/edu.png";
-import pic3 from "../../assets/img/flood.png";
+import React,{useState,useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 import Card from "../UI/Card/Card";
 
-const data = [
-  {
-    image: pic3,
-    title: "Help Flood Victims of Kerala",
-    description: " Desc for flood victims",
-    completepercent: "43% completed",
-    level:20,
-    active: 1,
-  },
-  {
-    image: pic2,
-    title: "Provide education for xyz",
-    description: " Desc for education",
-    completepercent: "43% completed",
-    level: 20,
-    active: 2,
-  },
-  {
-    image: pic1,
-    title: "Feed families in rajasthan",
-    description: " Desc for food",
-    completepercent: "43% completed",
-    level: 20,
-    active: 3,
-  },
-];
+
 
 function LeaderboardProp() {
+ 
+  const [data,setData] = useState([]);
+  useEffect(async ()=>{
+    const response =  await axios.get("http://localhost:5000/getCampaigns?id=1", {  
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+     },
+    })
+    setData(response.data);
+    console.log(response.data);
+  },[])
+
   return (
     <>
       <h1
@@ -44,7 +31,7 @@ function LeaderboardProp() {
       </h1>
       <p
         className="Leaderboard-quote"
-        class="text-purple text-2xl m-auto text-center w-fit-content p-5 font-mono font-bold mobile:text-lg mobile:italic"
+        class="hidden mt-5 text-purple text-l m-auto text-center w-fit-content p-5 font-mono font-bold mobile:text-lg mobile:italic"
       >
         "We ourselves feel that what we are doing is just a drop in the ocean.
         But the ocean would be less because of that missing drop." -Mother
@@ -52,7 +39,7 @@ function LeaderboardProp() {
       </p>
       <p
         className="Leaderbaord-motivation"
-        class="text-white text-xl font-mono mobile:text-sm font-bold"
+        class="text-white mx-auto w-2/3 mt-5 text-xl font-mono mobile:text-sm font-bold"
       >
         <center>
           Khyati, You were in the top 1% of our generous donors this week!

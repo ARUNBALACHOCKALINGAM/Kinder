@@ -16,6 +16,10 @@ import Donor from "./layouts/Donor";
 import { useState } from "react";
 import Login from "./components/Login/Login";
 
+import Axios from "axios";
+import Campaign from "./components/Campaign/Campaign";
+Axios.defaults.baseURL ="http://localhost:5000/";
+
 
 function App() {
 
@@ -39,7 +43,10 @@ function App() {
              <Route path="/donor/leaderboard" element={<LeaderboardProp/>}/>
              <Route path="/donor/history" element={<HistoryProp/>}/>
              <Route path="/donor/favorites" element={<FavoritesProp/>}/>
+             <Route path="/donor/:id" element={<Campaign/>}/>
            </Route>
+
+
 
          </Routes>
       </Router>

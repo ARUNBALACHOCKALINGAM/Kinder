@@ -1,54 +1,36 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 //assets
 import campaignimage from "../../assets/img/image2.jpg";
 import campaignimage2 from "../../assets/img/campaignpic1.png";
-
+import Axios  from "axios";
 import Card from "../UI/Card/Card";
 import Header from "../Header/Header";
+import axios from "axios";
+
 
 const CampaignCard = () => {
-  const [data, setData] = useState([
-    {
-      image: campaignimage,
-      title: "Donate for a cause",
-      description: "describe the above campaign",
-      completepercent: "60% completed",
-      level: "20",
-      active: 0,
-    },
-    {
-      image: campaignimage2,
-      title: "Feed the poor",
-      description: "describe the above campaign",
-      completepercent: "70% completed",
-      level: "20",
-      active: 1,
-    },
-    {
-      image: campaignimage,
-      title: "Donate for a cause",
-      description: "describe the above campaign",
-      completepercent: "60% completed",
-      level: "20",
-      active: 2,
-    },
-    {
-      image: campaignimage,
-      title: "Donate for a cause",
-      description: "describe the above campaign",
-      completepercent: "60% completed",
-      level: "20",
-      active: 3,
-    },
-  ]);
+  const [data, setData] = useState([]);
 
   const endCampaign = (e) => {
     console.log(e.target.id);
     setData((value) =>
-      value.filter((item) => item.active!=e.target.id)
+      value.filter((item) => item._id!=e.target.id)
     );
   };
+
+
+  useEffect(async ()=>{
+    const response =  await axios.get("http://localhost:5000/getCampaigns?id=1", {  
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+     },
+    })
+    setData(response.data);
+    console.log(response.data);
+  },[])
 
   return (
     <>
@@ -57,7 +39,7 @@ const CampaignCard = () => {
           return (
             <>
               <Card
-                id={content.active}
+                id={content._id}
                 onClick={endCampaign}
                 data={content}
                 action="End"

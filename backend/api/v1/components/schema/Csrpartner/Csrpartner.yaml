@@ -1,0 +1,28 @@
+type: object
+properties:
+  username:
+    type: string
+  email:
+    type: string
+  password:
+    type: string
+  csrpartnerName:
+    type: object
+    properties:
+      firstName:
+        type: string
+      middleName:
+        type: string
+      lastName:
+        type: string
+  accountDetails:
+      type: object
+      properties:
+        accountNumber: integer
+        bankName: string
+  phoneNumber:
+    type: integer
+  mobileNumber:
+    type: integer
+  organizationName:
+    type: string

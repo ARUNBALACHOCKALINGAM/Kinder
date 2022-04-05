@@ -1,0 +1,13 @@
+type: object
+properties:
+  title:
+    type: string
+  description:
+    type: string
+  amountRaised:
+    type: integer
+  raisedBy:
+    type: object
+    properties:
+      csrpartnerName: string
+      csrpartnerId: integer

@@ -9,15 +9,32 @@ import { Link } from "react-router-dom";
 import { AiFillPicture } from "react-icons/ai";
 import { FaRupeeSign } from "react-icons/fa";
 import campaignimage from "../../assets/img/image2.jpg";
+import axios from "axios";
 
 const CreateCampaign = () => {
   const [formsubmit, setFormsubmit] = useState(true);
 
+  const [campTitle,setCamptitle] = useState("");
+  const [campDescription,setcampDescription] = useState("");
+  const [campamtRaised,setCampamtRaised] = useState(0);
+  const [campamtRequested,setCampamtRequested] = useState(0);
+  const [campStatus,setCampStatus] = useState(true);
   const [image, setImage] = useState({ images: [] });
 
-  const createCampaign = (e) => {
+  const createCampaign = async (e) => {
     e.preventDefault();
     setFormsubmit(false);
+    //add comments
+    const response = await axios.post("/postCampaigns", {
+      camp_title: campTitle,
+      camp_description: campDescription,
+      camp_amt_raised: 0,
+      camp_amt_requested: campamtRaised,
+      camp_status: true,
+      camp_images: image,
+      csrpartner_id:"1"
+    });
+    console.log(response);
   };
 
   const fileUpload = (e) => {
@@ -41,17 +58,21 @@ const CreateCampaign = () => {
       <div className="flex flex-col mx-auto items-center justify-center desktop:w-8/12 desktop:bg-white desktop:ml-1/2 desktop:rounded-lg desktop:h-screen desktop:overflow-y-hidden desktop:mr-0 desktop:mt-0">
         {formsubmit ? (
           <div className="mt-2 w-full flex flex-col justify-center items-center ">
-            <h1 className="text-xl font-bold text-purple ">Create a campaign</h1>
+            <h1 className="text-xl font-bold text-purple ">
+              Create a campaign
+            </h1>
             <input
               className="w-5/6 mt-5 p-2 rounded-lg shadow-xl"
               type="text"
               placeholder="Enter title"
+              onChange={(e)=>setCamptitle(e.target.value)}
             />
             <textarea
               className="mt-5 w-5/6 p-2 rounded-lg shadow-xl"
               id=""
               placeholder="Enter description"
               rows="4"
+              onChange={(e)=>setcampDescription(e.target.value)}
             ></textarea>
             <div className="overflow-hidden relative w-5/6 mt-5 ">
               <button className="bg-purple hover:bg-indigo-dark text-white font-bold py-2 px-4 w-full inline-flex items-center rounded-lg shadow-xl">
@@ -69,11 +90,11 @@ const CreateCampaign = () => {
                 name="vacancyImageFiles"
                 multiple
               />
-              <div className="flex flex-row flex-nowrap justify-around " >
+              <div className="flex flex-row flex-nowrap overflow-x-scroll">
                 {image.images.map((img) => {
                   return (
                     <img
-                      className="w-1/5 border-dashed border-2 border-lav relative bottom-4"
+                      className="max-w-52 max-h-40 border-dashed border-2 border-lav relative bottom-4 ml-2"
                       src={img}
                       alt="campaign image"
                       accept="image/*"
@@ -86,6 +107,7 @@ const CreateCampaign = () => {
               className="mt-5 w-5/6 p-2 rounded-lg shadow-xl relative bottom-8 "
               type="text"
               placeholder="₹ Enter amount"
+              onChange={(e)=>setCampamtRaised(e.target.value)}
             />
             <Button
               className="mt-6 w-5/6 p-2 shadow-xl relative bottom-8"
@@ -99,22 +121,24 @@ const CreateCampaign = () => {
               Your campaign has been posted!
             </h1>
             <Link to="/csrpartner/campaignhistory">
-              <Button className="w-5/6 p-2 mt-5 desktop:mb-20" label="Go back" />
+              <Button
+                className="w-5/6 p-2 mt-5 desktop:mb-20"
+                label="Go back"
+              />
             </Link>
           </div>
         )}
-         <img
-        className="hidden absolute bottom-0 left-1 desktop:block"
-        src={pattern}
-        alt="pattern"
-      />
-      <img
-        className="hidden absolute left-72 bottom-0  w-72 h-4/6 desktop:block"
-        src={illustration}
-        alt="kid with phone"
-      />
+        <img
+          className="hidden absolute bottom-0 left-1 desktop:block"
+          src={pattern}
+          alt="pattern"
+        />
+        <img
+          className="hidden absolute left-72 bottom-0  w-72 h-4/6 desktop:block"
+          src={illustration}
+          alt="kid with phone"
+        />
       </div>
-     
     </div>
   );
 };

@@ -4,17 +4,6 @@ import pic3 from "../../assets/img/flood.png";
 import CampaignCard from "../CampaignList/CampaignCard";
 import FavoritesCard from "./FavoritesCard";
 
-const data = [
-  {
-    image: pic3,
-    title: "Help Flood Victims of Kerala",
-    description: " Desc for flood victims",
-    completepercent: "43% completed",
-    level: "20",
-    active: 1,
-  },
-];
-
 function FavoritesProp() {
   return (
     <>
@@ -24,7 +13,7 @@ function FavoritesProp() {
             <div className=" flex flex-col justify-center items-center mx-auto  rounded-lg mt-5 tablet:mt-10 tablet:w-11/12 tablet:p-4 desktop:w-5/6 ">
              
               <h1 className="text-xl font-semibold pt-2 pr-11 pl-11  font-mono text-white whitespace-nowrap mt-0 tablet:text-3xl desktop:text-3xl desktop:pr-1 desktop:pl-1">
-                Campaign history
+                Campaigns
               </h1>
             </div>
           </div>
