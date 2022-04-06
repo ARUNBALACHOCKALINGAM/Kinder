@@ -1,0 +1,156 @@
+/api/v1/auth/donor/login:
+  post:
+    tags:
+      - auth
+    summary: Donor Login
+    description: Login for the Donor account.
+    operationId: donorLogin
+    requestBody:
+      description: Credentials to login to the donor account.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "./components/schema/auth/donorLogin.yaml"
+    responses:
+      "200":
+        description: |
+          Successfully authenticated.
+          The session ID is returned in a cookie.
+        headers:
+          Set-Cookie:
+            schema:
+              type: string
+      "400":
+        description: Unsuccessful login of the donor
+/api/v1/auth/Csrpartner/register:
+  post:
+    tags:
+      - auth
+    summary: Register Csrpartner
+    description: Creates a Csrpartner based on the POST request.
+    operationId: registerFaculty
+    requestBody:
+      description: Inserts a single Csrpartner from the database.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "./components/schema/Csrpartner/Csrpartner.yaml"
+    responses:
+      "201":
+        description: Successful entry of the Csrpartner
+        content:
+          application/json:
+            schema:
+              $ref: "./components/schema/Csrpartner/Csrpartner.yaml"
+      "400":
+        description: Unsuccessful entry of the Csrpartner
+/api/v1/auth/Csrpartner/login:
+  post:
+    tags:
+      - auth
+    summary: Csrpartner Login
+    description: Login for the Csrpartner account.
+    operationId: csrpartnerLogin
+    requestBody:
+      description: Credentials to login to the Csrpartner account.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "./components/schema/auth/csrpartnerLogin.yaml"
+    responses:
+      "200":
+        description: |
+          Successfully authenticated.
+          The session ID is returned in a cookie.
+        headers:
+          Set-Cookie:
+            schema:
+              type: string
+/api/v1/auth/donee/register:
+  post:
+    tags:
+      - auth
+    summary: Register one donee
+    description: Creates a donee based on the POST request.
+    operationId: registerAdmin
+    requestBody:
+      description: Inserts a single donee from the database.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "./components/schema/donee/donee.yaml"
+    responses:
+      "201":
+        description: Successful entry of the donee
+        content:
+          application/json:
+            schema:
+              $ref: "./components/schema/donee/donee.yaml"
+      "400":
+        description: Unsuccessful entry of the donee
+/api/v1/auth/donee/login:
+  post:
+    tags:
+      - auth
+    summary: Donee Login
+    description: Login for the donee account.
+    operationId: adminLogin
+    requestBody:
+      description: Credentials to login to the donee account.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "./components/schema/auth/doneeLogin.yaml"
+    responses:
+      "200":
+        description: |
+          Successfully authenticated.
+          The session ID is returned in a cookie.
+        headers:
+          Set-Cookie:
+            schema:
+              type: string
+
+/api/v1/donors:
+  get:
+    tags:
+      - donors
+    summary: Get all the donors
+    description: Get details of all the donors objects present in the database.
+    operationId: getAlldonors
+    responses:
+      "200":
+        description: Successful retrieval of all donors
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "./components/schema/donor/donor.yaml"
+      "400":
+        description: donor could not be retrieved
+
+/api/v1/donors/campaigns:
+  get:
+    tags:
+      - donors
+    summary: Get all the campaigns
+    description: Get details of all the campaign objects present in the database.
+    operationId: getAllcampaigns
+    responses:
+      "200":
+        description: Successful retrieval of all campaigns
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "./components/schema/campaign/campaign.yaml"
+      "400":
+        description: campaign could not be retrieved
+

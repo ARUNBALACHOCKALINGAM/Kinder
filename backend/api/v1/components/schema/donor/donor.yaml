@@ -1,0 +1,26 @@
+type: object
+properties:
+  natwestId:
+    type: string
+  email:
+    type: string
+  password:
+    type: string
+  donorName:
+    type: object
+    properties:
+      firstName:
+        type: string
+      middleName:
+        type: string
+      lastName:
+        type: string
+  accountDetails:
+      type: object
+      properties:
+        accountNumber: integer
+        bankName: string
+  phoneNumber:
+    type: integer
+  mobileNumber:
+    type: integer

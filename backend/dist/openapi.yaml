@@ -1,0 +1,302 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: KINDER
+  description: KINDER
+  contact:
+    name: Arun
+    email: abclingam1@gmail.com
+servers:
+  - url: 'http://example.com'
+tags:
+  - name: donors
+    description: The API endpoints for the operations to be performed on the Donor level
+  - name: Csrpartner
+    description: The API endpoints for the operations to be performed on the Csrpartner level
+  - name: Donee
+    description: The API endpoints to be performed by the Donee
+  - name: Donations
+    description: The API endpoints to work with donation related information.
+  - name: auth
+    description: The API endpoints for the authentication of various user models.
+paths:
+  /api/v1/auth/donor/register:
+    post:
+      tags:
+        - auth
+      summary: Register donor
+      description: Creates a donor account based on the POST request.
+      operationId: registerDonor
+      requestBody:
+        description: Inserts a single donor from the database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                natwestId:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                donorName:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    middleName:
+                      type: string
+                    lastName:
+                      type: string
+                accountDetails:
+                  type: object
+                  properties:
+                    accountNumber: integer
+                    bankName: string
+                phoneNumber:
+                  type: integer
+                mobileNumber:
+                  type: integer
+      responses:
+        '201':
+          description: Successful entry of the donor
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1api~1v1~1auth~1donor~1register/post/requestBody/content/application~1json/schema'
+        '400':
+          description: Unsuccessful entry of the donor
+  /api/v1/auth/donor/login:
+    post:
+      tags:
+        - auth
+      summary: Donor Login
+      description: Login for the Donor account.
+      operationId: donorLogin
+      requestBody:
+        description: Credentials to login to the donor account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                natwestId:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: |
+            Successfully authenticated.
+            The session ID is returned in a cookie.
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+        '400':
+          description: Unsuccessful login of the donor
+  /api/v1/auth/Csrpartner/register:
+    post:
+      tags:
+        - auth
+      summary: Register Csrpartner
+      description: Creates a Csrpartner based on the POST request.
+      operationId: registerFaculty
+      requestBody:
+        description: Inserts a single Csrpartner from the database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                csrpartnerName:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    middleName:
+                      type: string
+                    lastName:
+                      type: string
+                accountDetails:
+                  type: object
+                  properties:
+                    accountNumber: integer
+                    bankName: string
+                phoneNumber:
+                  type: integer
+                mobileNumber:
+                  type: integer
+                organizationName:
+                  type: string
+      responses:
+        '201':
+          description: Successful entry of the Csrpartner
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1api~1v1~1auth~1Csrpartner~1register/post/requestBody/content/application~1json/schema'
+        '400':
+          description: Unsuccessful entry of the Csrpartner
+  /api/v1/auth/Csrpartner/login:
+    post:
+      tags:
+        - auth
+      summary: Csrpartner Login
+      description: Login for the Csrpartner account.
+      operationId: csrpartnerLogin
+      requestBody:
+        description: Credentials to login to the Csrpartner account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: |
+            Successfully authenticated.
+            The session ID is returned in a cookie.
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+  /api/v1/auth/donee/register:
+    post:
+      tags:
+        - auth
+      summary: Register one donee
+      description: Creates a donee based on the POST request.
+      operationId: registerAdmin
+      requestBody:
+        description: Inserts a single donee from the database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                doneeName:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    middleName:
+                      type: string
+                    lastName:
+                      type: string
+                accountDetails:
+                  type: object
+                  properties:
+                    accountNumber: integer
+                    bankName: string
+                phoneNumber:
+                  type: integer
+                mobileNumber:
+                  type: integer
+      responses:
+        '201':
+          description: Successful entry of the donee
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1api~1v1~1auth~1donee~1register/post/requestBody/content/application~1json/schema'
+        '400':
+          description: Unsuccessful entry of the donee
+  /api/v1/auth/donee/login:
+    post:
+      tags:
+        - auth
+      summary: Donee Login
+      description: Login for the donee account.
+      operationId: adminLogin
+      requestBody:
+        description: Credentials to login to the donee account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: |
+            Successfully authenticated.
+            The session ID is returned in a cookie.
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+  /api/v1/donors:
+    get:
+      tags:
+        - donors
+      summary: Get all the donors
+      description: Get details of all the donors objects present in the database.
+      operationId: getAlldonors
+      responses:
+        '200':
+          description: Successful retrieval of all donors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1api~1v1~1auth~1donor~1register/post/requestBody/content/application~1json/schema'
+        '400':
+          description: donor could not be retrieved
+  /api/v1/donors/campaigns:
+    get:
+      tags:
+        - donors
+      summary: Get all the campaigns
+      description: Get details of all the campaign objects present in the database.
+      operationId: getAllcampaigns
+      responses:
+        '200':
+          description: Successful retrieval of all campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    amountRaised:
+                      type: integer
+                    raisedBy:
+                      type: object
+                      properties:
+                        csrpartnerName: string
+                        csrpartnerId: integer
+        '400':
+          description: campaign could not be retrieved
